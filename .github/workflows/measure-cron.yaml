@@ -1,0 +1,15 @@
+# Fork-only measurement workflow (agarg21/ci-agent campaign): build images, then the CRONJOB e2e suite only.
+name: Measure CRONJOB
+
+on:
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  build-images:
+    uses: ./.github/workflows/docker_images.yaml
+
+  e2e-cronjob:
+    needs: build-images
+    uses: ./.github/workflows/e2e_cronjob.yaml
