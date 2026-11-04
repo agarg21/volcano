@@ -572,7 +572,7 @@ case ${E2E_TYPE} in
     ;;
 "CRONJOB")
     echo "Running cronjob e2e suite..."
-    KUBECONFIG=${KUBECONFIG} GOOS=${OS} ginkgo -v -r --slow-spec-threshold='30s' --progress ./test/e2e/cronjob/
+    KUBECONFIG=${KUBECONFIG} GOOS=${OS} ginkgo -v -r --nodes=4 --slow-spec-threshold='30s' --progress ./test/e2e/cronjob/
     ;;
 "AGENTSCHEDULER"|"AGENTSCHEDULER_NONE"|"AGENTSCHEDULER_SOFT"|"AGENTSCHEDULER_HARD")
     agent_scheduler_sharding_mode="${E2E_TYPE#AGENTSCHEDULER_}"
